@@ -1,0 +1,78 @@
+1. Explain the protected access modifier in Java. In which scenarios is it most useful, and how does it differ from private and public modifiers?
+
+The protected access modifier in Java allows a member to be accessible within its own package and by subclasses (even if they are in different packages). It is most useful when you want to give access to members to subclasses while still restricting access from non-related classes.
+
+Differences:
+
+private :- Accessible only within the same class.
+public :- Accessible from any other class.
+protected :- Accessible within the same package and by subclasses in different packages.
+
+3. How does the protected access modifier behave in the context of inheritance and package visibility? Give a scenario where using protected would be more appropriate than using private or public.
+
+The protected access modifier is useful when you need to allow access to members within the same package and by subclasses in different packages. It's more appropriate than private when you want to enable inheritance and less exposed than public.
+
+Scenario :-
+Use protected for a method in a superclass that is intended to be overridden by subclasses in other packages but should not be accessible to the world.
+
+4. Purpose of Try, Catch, and Finally in Java
+
+try :- Encloses code that might throw an exception.
+catch :- Catches and handles exceptions thrown in the try block.
+finally :- Executes code regardless of whether an exception was thrown or caught, usually for cleanup activities.
+
+Example : 
+
+	try {
+
+ 	    // Code that may throw an exception
+
+	} catch (Exception e) {
+
+	    // Handle exception
+
+	} finally {
+
+	    // Code that will always execute
+
+	}
+
+5. What happens if an exception is thrown in a try block but there is no corresponding catch block to handle that exception? Illustrate with an example.
+
+If an exception is thrown in a try block without a corresponding catch block, the program will terminate, and the exception will propagate up the call stack.
+
+package Excersise5;
+public class exception {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // This will throw ArithmeticException
+        }
+        // No catch block to handle the exception
+        System.out.println("This line will not execute");
+    }
+}
+
+6. Can you have multiple catch blocks for a single try block in Java? If yes, explain how Java determines which catch block to execute when an exception is thrown.
+
+Yes, We can have multiple catch blocks for a single try block. Java will execute the first catch block that matches the type of exception thrown.
+package Excercise6;
+
+public class MultipleException {
+    public static void main(String[] args) {
+        try {
+            int[] n = {10, 20, 30};
+            System.out.println(n[5]);
+            int res = 10/0;
+
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Array index ArrayIndexOutOfBoundsException out of bound exception");
+        }catch (ArithmeticException e){
+            System.out.println("Arithmetic exception: Division by zero!");
+        }catch (Exception e){
+            System.out.println("An  unexpected error occurred: "+ e.getMessage());
+        }finally {
+            System.out.println("-+-+-+-+-+-+-+-");
+            System.out.println("Program continues after try-catch blocks.");
+        }
+    }
+}
